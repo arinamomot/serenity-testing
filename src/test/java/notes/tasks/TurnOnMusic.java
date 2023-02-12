@@ -6,7 +6,7 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Step;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
-import static notes.pageObjects.NotesHomePage.*;
+import static notes.pageObjects.HomePage.*;
 
 public class TurnOnMusic {
 	@Step
@@ -17,7 +17,6 @@ public class TurnOnMusic {
 				.then(Click.on(SETTINGS_BUTTON))
 		);
 	}
-	
 	@Step
 	public static Task selectSwitchButton() {
 		return Task.where(
