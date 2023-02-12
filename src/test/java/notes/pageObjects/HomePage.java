@@ -18,4 +18,14 @@ public class HomePage extends PageObject {
 	
 	public static final Target ADD_NEW_NOTE_BUTTON_HOME =
 		Target.the("Add New Note Button Home Page").locatedBy("/html/body/div[1]/div/div/div/svg/a");
+	
+	public static final Target MENU_BUTTON =
+		Target.the("Menu Button").locatedBy("/html/body/div[1]/div/header/div[1]/button");
+	
+	public static final Target MENU_SECTION =
+		Target.the("Menu Section").locatedBy("/html/body/div[1]/div/header/div[2]/aside/div[2]");
+	
+	public static final Target DATE =
+		Target.the("Status").locatedBy("/html/body/div[1]/div/header/div[2]/aside/div[1]/p[2]");
+	
 }

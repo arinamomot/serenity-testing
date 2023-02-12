@@ -52,6 +52,9 @@ public class NotesPage extends PageObject {
 //		return Target.the("note div with index '{0}'").located(By.cssSelector("div.note:nth-child(" + index + ")"));
 //	}
 	
+	public static final Target LOCATION_ERROR =
+		Target.the("Location error").locatedBy("\t/html/body/div[3]/div[2]/div/div/form/label[2]/div/div[1]/div[3]");
+	
 	public static final Target DELETE_BUTTON =
 		Target.the("Delete Button").locatedBy("/html/body/div[3]/div[2]/div/div/div[4]/button");
 	

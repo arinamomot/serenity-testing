@@ -12,7 +12,7 @@ public class TurnOnMusic {
 	@Step
 	public static Task clickSettingButton() {
 		return Task.where(
-			"{1} turn on music",
+			"Click settings button",
 			WaitUntil.the(SETTINGS_BUTTON, isVisible())
 				.then(Click.on(SETTINGS_BUTTON))
 		);
@@ -20,7 +20,7 @@ public class TurnOnMusic {
 	@Step
 	public static Task selectSwitchButton() {
 		return Task.where(
-			"{2} turn on music",
+			"Turn on music",
 			WaitUntil.the(SETTINGS_WINDOW, isVisible())
 				.then(Click.on(SWITCH_BUTTON))
 		);

@@ -36,7 +36,7 @@ public class DeleteNoteTest {
 		givenThat(arina).wasAbleTo(Open.browserOn().the(new NotesPage()));
 		arina.attemptsTo(
 			ClickTask.clickOnCircleAddNoteButton(),
-			FillInNoteForm.fillInFormWithConstData(),
+			FillInNoteForm.fillInFormWithConstValidData(),
 			ClickTask.clickOnAddNoteButton()
 		);
 	}

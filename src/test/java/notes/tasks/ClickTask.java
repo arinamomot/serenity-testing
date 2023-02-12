@@ -7,6 +7,7 @@ import net.thucydides.core.annotations.Step;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static notes.pageObjects.HomePage.ADD_NEW_NOTE_BUTTON_HOME;
+import static notes.pageObjects.HomePage.MENU_BUTTON;
 import static notes.pageObjects.NotesPage.*;
 
 public class ClickTask {
@@ -62,6 +63,15 @@ public class ClickTask {
 			"Click on reset fields button in the note form",
 			WaitUntil.the(RESET_BUTTON, isVisible())
 				.then(Click.on(RESET_BUTTON))
+		);
+	}
+	
+	@Step
+	public static Task clickOnMenuButton() {
+		return Task.where(
+			"Click on reset fields button in the note form",
+			WaitUntil.the(MENU_BUTTON, isVisible())
+				.then(Click.on(MENU_BUTTON))
 		);
 	}
 }

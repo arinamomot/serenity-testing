@@ -25,12 +25,13 @@ public class TurnOnMusicTest {
 	private WebDriver driver;
 	
 	@Before
-	public void before() throws IOException {
+	public void before() {
 		givenThat(arina).can(BrowseTheWeb.with(driver));
-	}
-	@Test
-	public void shouldBeAbleToTurnOnMusic() {
 		givenThat(arina).wasAbleTo(Open.browserOn().the(new HomePage()));
+	}
+	
+	@Test
+	public void should_be_able_to_turn_on_music() {
 		when(arina).attemptsTo(TurnOnMusic.clickSettingButton());
 		assertTrue(HomePage.SETTINGS_BUTTON.resolveFor(arina).isEnabled());
 		when(arina).attemptsTo(TurnOnMusic.selectSwitchButton());

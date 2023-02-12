@@ -82,16 +82,6 @@ public class AddNewNoteWithCSVdataTest {
 		then(arina).should(seeThat(the(END_DATE_FIELD), hasValue(firstRow.get("endDate"))));
 		then(arina).should(seeThat(the(DESCRIPTION_FIELD), hasValue(firstRow.get("description"))));
 		then(arina).should(seeThat(the(URL_FIELD), hasValue(firstRow.get("url"))));
-
-//		then(arina).should(seeThat(TheInputFieldValue.of(TITLE_FIELD), equalTo(firstRow.get("title"))));
-//		then(arina).should(seeThat(TheInputFieldValue.of(LOCATION_FIELD), equalTo(firstRow.get("location"))));
-//		then(arina).should(seeThat(TheInputFieldValue.of(START_TIME_FIELD), equalTo(ConvertTime.convertTimeTo24HourFormat(firstRow.get("startTime")))));
-//		System.out.println(ConvertTime.convertTimeTo24HourFormat(firstRow.get("startTime")));
-//		then(arina).should(seeThat(TheInputFieldValue.of(START_DATE_FIELD), equalTo(firstRow.get("startDate"))));
-//		then(arina).should(seeThat(TheInputFieldValue.of(END_TIME_FIELD), equalTo(firstRow.get("endTime"))));
-//		then(arina).should(seeThat(TheInputFieldValue.of(END_DATE_FIELD), equalTo(firstRow.get("endDate"))));
-//		then(arina).should(seeThat(TheInputFieldValue.of(DESCRIPTION_FIELD), equalTo(firstRow.get("description"))));
-//		then(arina).should(seeThat(TheInputFieldValue.of(URL_FIELD), equalTo(firstRow.get("url"))));
 	}
 	
 	@Test

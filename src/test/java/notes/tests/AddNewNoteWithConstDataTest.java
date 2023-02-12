@@ -42,7 +42,7 @@ public class AddNewNoteWithConstDataTest {
 	public void should_be_able_to_fill_in_note_form_with_const_valid_data() {
 		when(arina).attemptsTo(ClickTask.clickOnCircleAddNoteButton());
 		assertTrue(NotesPage.ADD_NOTE_CIRCLE_BUTTON.resolveFor(arina).isEnabled());
-		when(arina).attemptsTo(FillInNoteForm.fillInFormWithConstData());
+		when(arina).attemptsTo(FillInNoteForm.fillInFormWithConstValidData());
 		then(arina).should(seeThat(the(TITLE_FIELD), hasValue(ValidData.getTitle())));
 		then(arina).should(seeThat(the(LOCATION_FIELD), hasValue(ValidData.getLocation())));
 		then(arina).should(seeThat(the(START_TIME_FIELD), hasValue(ValidData.getStartTimeConverted())));
@@ -51,22 +51,13 @@ public class AddNewNoteWithConstDataTest {
 		then(arina).should(seeThat(the(END_DATE_FIELD), hasValue(ValidData.getDateConverted())));
 		then(arina).should(seeThat(the(DESCRIPTION_FIELD), hasValue(ValidData.getDescription())));
 		then(arina).should(seeThat(the(URL_FIELD), hasValue(ValidData.getUrl())));
-
-//		then(arina).should(seeThat(TheInputFieldValue.of(TITLE_FIELD), equalTo(ValidData.getTitle())));
-//		then(arina).should(seeThat(TheInputFieldValue.of(LOCATION_FIELD), equalTo(ValidData.getLocation())));
-//		then(arina).should(seeThat((TheInputFieldValue.of(START_TIME_FIELD)), equalTo(ValidData.getStartTimeConverted())));
-//		then(arina).should(seeThat(TheInputFieldValue.of(START_DATE_FIELD), equalTo(ValidData.getDateConverted())));
-//		then(arina).should(seeThat(TheInputFieldValue.of(END_TIME_FIELD), equalTo(ValidData.getEndTimeConverted())));
-//		then(arina).should(seeThat(TheInputFieldValue.of(END_DATE_FIELD), equalTo(ValidData.getDateConverted())));
-//		then(arina).should(seeThat(TheInputFieldValue.of(DESCRIPTION_FIELD), equalTo(ValidData.getDescription())));
-//		then(arina).should(seeThat(TheInputFieldValue.of(URL_FIELD), equalTo(ValidData.getUrl())));
 	}
 	
 	@Test
 	public void should_be_able_to_add_new_note_with_const_data() {
 		when(arina).attemptsTo(ClickTask.clickOnCircleAddNoteButton());
 		assertTrue(NotesPage.ADD_NOTE_CIRCLE_BUTTON.resolveFor(arina).isEnabled());
-		when(arina).attemptsTo(FillInNoteForm.fillInFormWithConstData());
+		when(arina).attemptsTo(FillInNoteForm.fillInFormWithConstValidData());
 		then(arina).wasAbleTo(ClickTask.clickOnAddNoteButton());
 		assertTrue(NotesPage.ADD_NOTE_BUTTON.resolveFor(arina).isEnabled());
 		
@@ -74,5 +65,14 @@ public class AddNewNoteWithConstDataTest {
 		assertTrue(NotesPage.NOTE_CARD.resolveFor(arina).isVisible());
 		Integer count = arina.asksFor(NotesCount.locatedBy(NOTE_CARD_DYNAMIC));
 		assertEquals((int) count, 1);
+	}
+	
+	@Test
+	public void should_not_be_able_to_add_new_note_with_const_data() {
+		when(arina).attemptsTo(ClickTask.clickOnCircleAddNoteButton());
+		assertTrue(NotesPage.ADD_NOTE_CIRCLE_BUTTON.resolveFor(arina).isEnabled());
+		when(arina).attemptsTo(FillInNoteForm.fillInFormWithConstInvalidData());
+		when(arina).attemptsTo(ClickTask.clickOnAddNoteButton());
+		assertTrue(NotesPage.LOCATION_ERROR.resolveFor(arina).isVisible());
 	}
 }
