@@ -1,4 +1,4 @@
-image: markhobson/maven-chrome:jdk-11
+image: maven:3.8.3-jdk-17
 
 stages:
   - build
