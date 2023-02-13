@@ -8,6 +8,7 @@ import net.thucydides.core.annotations.Managed;
 import notes.pageObjects.NotesPage;
 import notes.tasks.ClickTask;
 import notes.tasks.FillInNoteForm;
+import notes.utils.ValidDataNote;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,10 +34,18 @@ public class ResetNoteFormTest {
 	public void before() {
 		givenThat(arina).can(BrowseTheWeb.with(driver));
 		givenThat(arina).wasAbleTo(Open.browserOn().the(new NotesPage()));
-		arina.attemptsTo(
+		when(arina).attemptsTo(
 			ClickTask.clickOnCircleAddNoteButton(),
 			FillInNoteForm.fillInFormWithConstValidData()
 		);
+		then(arina).should(seeThat(the(TITLE_FIELD), hasValue(ValidDataNote.getTitle())));
+		then(arina).should(seeThat(the(LOCATION_FIELD), hasValue(ValidDataNote.getLocation())));
+		then(arina).should(seeThat(the(START_TIME_FIELD), hasValue(ValidDataNote.getStartTimeConverted())));
+		then(arina).should(seeThat(the(START_DATE_FIELD), hasValue(ValidDataNote.getDateConverted())));
+		then(arina).should(seeThat(the(END_TIME_FIELD), hasValue(ValidDataNote.getEndTimeConverted())));
+		then(arina).should(seeThat(the(END_DATE_FIELD), hasValue(ValidDataNote.getDateConverted())));
+		then(arina).should(seeThat(the(DESCRIPTION_FIELD), hasValue(ValidDataNote.getDescription())));
+		then(arina).should(seeThat(the(URL_FIELD), hasValue(ValidDataNote.getUrl())));
 	}
 	
 	@Test
