@@ -1,4 +1,4 @@
-image: maven:3.8.3-jdk-17
+image: markhobson/maven-chrome:jdk-11
 
 variables:
   MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
