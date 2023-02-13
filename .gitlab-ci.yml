@@ -20,3 +20,10 @@ test:
   stage: test
   script:
    - mvn test
+
+  artifacts:
+    when: always
+    paths:
+      - serenity/videos/**/*.mp4
+      - serenity/screenshots/**/*.png
+    expire_in: 1 week
