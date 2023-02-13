@@ -1,0 +1,25 @@
+image: maven:3.8.3-jdk-17
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+stages:
+  - build
+  - test
+
+cache:
+  paths:
+    - .m2/repository/
+
+build:
+  stage: build
+  script:
+    - mvn clean compile
+
+test:
+  stage: test
+  script:
+    - mvn test -B
+  artifacts:
+    reports:
+      junit: target/surefire-reports/*.xml

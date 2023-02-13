@@ -5,7 +5,6 @@ import net.serenitybdd.screenplay.Performable;
 import net.serenitybdd.screenplay.actions.Enter;
 import net.serenitybdd.screenplay.targets.Target;
 import net.thucydides.core.annotations.DefaultUrl;
-import org.openqa.selenium.By;
 
 @DefaultUrl("https://notes-vue-deploy-zks.vercel.app/#/notes")
 public class NotesPage extends PageObject {

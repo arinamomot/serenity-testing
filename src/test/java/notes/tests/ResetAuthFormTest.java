@@ -6,10 +6,8 @@ import net.serenitybdd.screenplay.abilities.BrowseTheWeb;
 import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Managed;
 import notes.pageObjects.AuthPage;
-import notes.pageObjects.NotesPage;
 import notes.tasks.ClickTask;
 import notes.tasks.FillInAuthFormWithCSVData;
-import notes.tasks.FillInNoteForm;
 import notes.utils.ConvertDate;
 import notes.utils.ReadDataFromCSV;
 import org.junit.Before;
@@ -25,7 +23,6 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.hasValue;
 import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
 import static notes.pageObjects.AuthPage.*;
-import static notes.pageObjects.NotesPage.*;
 import static org.junit.Assert.assertTrue;
 
 @ExtendWith(SerenityJUnit5Extension.class)
