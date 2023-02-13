@@ -11,6 +11,7 @@ import notes.questions.NotesCount;
 import notes.tasks.ClickTask;
 import notes.tasks.FillInNoteFormWithCSVData;
 import notes.utils.ConvertTime;
+import notes.utils.ReadDataFromCSV;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -35,7 +36,7 @@ public class AddNewNoteWithCSVdataTest {
 	@Managed
 	private WebDriver driver;
 	
-	private static final String TEST_DATA_FILE = "src/test/resources/noteData.csv";
+	private static final String NOTE_TEST_DATA_FILE = "src/test/resources/noteData.csv";
 	
 	@Before
 	public void before() {
@@ -43,30 +44,9 @@ public class AddNewNoteWithCSVdataTest {
 		givenThat(arina).wasAbleTo(Open.browserOn().the(new NotesPage()));
 	}
 	
-	private List<Map<String, String>> readTestData() {
-		List<Map<String, String>> testData = new ArrayList<>();
-		
-		try (CSVReader csvReader = new CSVReader(new FileReader(AddNewNoteWithCSVdataTest.TEST_DATA_FILE))) {
-			String[] headers = csvReader.readNext();
-			
-			String[] row;
-			while ((row = csvReader.readNext()) != null) {
-				Map<String, String> testDataItem = new HashMap<>();
-				for (int i = 0; i < headers.length; i++) {
-					testDataItem.put(headers[i], row[i]);
-				}
-				testData.add(testDataItem);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		return testData;
-	}
-	
 	@Test
 	public void should_be_able_to_fill_in_new_note_with_data_from_CSV_file() {
-		List<Map<String, String>> testData = readTestData();
+		List<Map<String, String>> testData = ReadDataFromCSV.readTestData(NOTE_TEST_DATA_FILE);
 		Map<String, String> firstRow = testData.get(0);
 		
 		when(arina).attemptsTo(ClickTask.clickOnCircleAddNoteButton());
@@ -86,7 +66,7 @@ public class AddNewNoteWithCSVdataTest {
 	
 	@Test
 	public void should_be_able_to_add_new_note_with_data_from_CSV_file() {
-		List<Map<String, String>> testData = readTestData();
+		List<Map<String, String>> testData = ReadDataFromCSV.readTestData(NOTE_TEST_DATA_FILE);
 		
 		for (Map<String, String> testDataItem : testData) {
 			arina.attemptsTo(

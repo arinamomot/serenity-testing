@@ -6,6 +6,7 @@ import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Step;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
+import static notes.pageObjects.AuthPage.*;
 import static notes.pageObjects.HomePage.ADD_NEW_NOTE_BUTTON_HOME;
 import static notes.pageObjects.HomePage.MENU_BUTTON;
 import static notes.pageObjects.NotesPage.*;
@@ -69,9 +70,36 @@ public class ClickTask {
 	@Step
 	public static Task clickOnMenuButton() {
 		return Task.where(
-			"Click on reset fields button in the note form",
+			"Click on menu button on the home page",
 			WaitUntil.the(MENU_BUTTON, isVisible())
 				.then(Click.on(MENU_BUTTON))
+		);
+	}
+	
+	@Step
+	public static Task clickOnSubmitAuthButton() {
+		return Task.where(
+			"Click on submit button in the auth form",
+			WaitUntil.the(SUBMIT_AUTH_BUTTON, isVisible())
+				.then(Click.on(SUBMIT_AUTH_BUTTON))
+		);
+	}
+	
+	@Step
+	public static Task acceptLicenseTermsButton() {
+		return Task.where(
+			"Click on accept license and term checkbox in the auth form",
+			WaitUntil.the(LICENSE_TERMS_CHECKBOX, isVisible())
+				.then(Click.on(LICENSE_TERMS_CHECKBOX))
+		);
+	}
+	
+	@Step
+	public static Task clickOnResetAuthButton() {
+		return Task.where(
+			"Click on reset fields button in the auth form",
+			WaitUntil.the(RESET_AUTH_BUTTON, isVisible())
+				.then(Click.on(RESET_AUTH_BUTTON))
 		);
 	}
 }

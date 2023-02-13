@@ -1,6 +1,6 @@
 package notes.utils;
 
-public class ValidData {
+public class ValidDataNote {
 	private static final String title = "New Note";
 	private static final String location = "Prague";
 	private static final String startTime = "1234PM";

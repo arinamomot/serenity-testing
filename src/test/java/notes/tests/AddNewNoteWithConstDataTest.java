@@ -7,10 +7,9 @@ import net.serenitybdd.screenplay.actions.Open;
 import net.thucydides.core.annotations.Managed;
 import notes.pageObjects.NotesPage;
 import notes.questions.NotesCount;
-import notes.questions.TheInputFieldValue;
 import notes.tasks.ClickTask;
 import notes.tasks.FillInNoteForm;
-import notes.utils.ValidData;
+import notes.utils.ValidDataNote;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -21,7 +20,6 @@ import static net.serenitybdd.screenplay.GivenWhenThen.seeThat;
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.hasValue;
 import static net.serenitybdd.screenplay.questions.WebElementQuestion.the;
 import static notes.pageObjects.NotesPage.*;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 @ExtendWith(SerenityJUnit5Extension.class)
@@ -43,14 +41,14 @@ public class AddNewNoteWithConstDataTest {
 		when(arina).attemptsTo(ClickTask.clickOnCircleAddNoteButton());
 		assertTrue(NotesPage.ADD_NOTE_CIRCLE_BUTTON.resolveFor(arina).isEnabled());
 		when(arina).attemptsTo(FillInNoteForm.fillInFormWithConstValidData());
-		then(arina).should(seeThat(the(TITLE_FIELD), hasValue(ValidData.getTitle())));
-		then(arina).should(seeThat(the(LOCATION_FIELD), hasValue(ValidData.getLocation())));
-		then(arina).should(seeThat(the(START_TIME_FIELD), hasValue(ValidData.getStartTimeConverted())));
-		then(arina).should(seeThat(the(START_DATE_FIELD), hasValue(ValidData.getDateConverted())));
-		then(arina).should(seeThat(the(END_TIME_FIELD), hasValue(ValidData.getEndTimeConverted())));
-		then(arina).should(seeThat(the(END_DATE_FIELD), hasValue(ValidData.getDateConverted())));
-		then(arina).should(seeThat(the(DESCRIPTION_FIELD), hasValue(ValidData.getDescription())));
-		then(arina).should(seeThat(the(URL_FIELD), hasValue(ValidData.getUrl())));
+		then(arina).should(seeThat(the(TITLE_FIELD), hasValue(ValidDataNote.getTitle())));
+		then(arina).should(seeThat(the(LOCATION_FIELD), hasValue(ValidDataNote.getLocation())));
+		then(arina).should(seeThat(the(START_TIME_FIELD), hasValue(ValidDataNote.getStartTimeConverted())));
+		then(arina).should(seeThat(the(START_DATE_FIELD), hasValue(ValidDataNote.getDateConverted())));
+		then(arina).should(seeThat(the(END_TIME_FIELD), hasValue(ValidDataNote.getEndTimeConverted())));
+		then(arina).should(seeThat(the(END_DATE_FIELD), hasValue(ValidDataNote.getDateConverted())));
+		then(arina).should(seeThat(the(DESCRIPTION_FIELD), hasValue(ValidDataNote.getDescription())));
+		then(arina).should(seeThat(the(URL_FIELD), hasValue(ValidDataNote.getUrl())));
 	}
 	
 	@Test

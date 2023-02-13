@@ -30,9 +30,7 @@ public class ConvertTime {
 			DateFormat inputFormat = new SimpleDateFormat("hhmma");
 			DateFormat outputFormat = new SimpleDateFormat("HH:mm");
 			Date date = inputFormat.parse(time);
-			System.out.println(date);
 			String result = outputFormat.format(date);
-			System.out.println(result);
 			return result;
 		} catch (ParseException e) {
 			return null;

@@ -8,7 +8,6 @@ import net.thucydides.core.annotations.Managed;
 import notes.pageObjects.NotesPage;
 import notes.tasks.ClickTask;
 import notes.tasks.FillInNoteForm;
-import notes.utils.ValidData;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

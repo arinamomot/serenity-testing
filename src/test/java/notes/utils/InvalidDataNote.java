@@ -1,6 +1,6 @@
 package notes.utils;
 
-public class InvalidData {
+public class InvalidDataNote {
 	private static final String title = "New Note";
 	private static final String location = "Prague+";
 	private static final String description = "New note description";
