@@ -1,11 +1,11 @@
 image: markhobson/maven-chrome:jdk-11
 
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-
 stages:
   - build
   - test
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
 cache:
   paths:
@@ -14,12 +14,9 @@ cache:
 build:
   stage: build
   script:
-    - mvn clean compile
+    - mvn compile
 
 test:
   stage: test
   script:
-    - mvn test -B
-  artifacts:
-    reports:
-      junit: target/surefire-reports/*.xml
+   - mvn test
