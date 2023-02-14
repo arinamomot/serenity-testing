@@ -1,11 +1,11 @@
-image: maven:3.8.3-jdk-17
-
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+image: markhobson/maven-chrome:jdk-17
 
 stages:
   - build
   - test
+
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
 
 cache:
   paths:
@@ -14,12 +14,16 @@ cache:
 build:
   stage: build
   script:
-    - mvn clean compile
+    - mvn compile
 
 test:
   stage: test
   script:
-    - mvn test -B
+   - mvn clean verify
+
   artifacts:
-    reports:
-      junit: target/surefire-reports/*.xml
+    when: always
+    paths:
+      - serenity/videos/**/*.mp4
+      - serenity/screenshots/**/*.png
+    expire_in: 1 week
