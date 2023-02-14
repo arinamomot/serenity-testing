@@ -19,7 +19,7 @@ build:
 test:
   stage: test
   script:
-   - mvn test
+   - mvn clean verify
 
   artifacts:
     when: always
