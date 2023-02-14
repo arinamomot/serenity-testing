@@ -4,11 +4,11 @@ import net.serenitybdd.screenplay.Task;
 import net.serenitybdd.screenplay.actions.Click;
 import net.serenitybdd.screenplay.waits.WaitUntil;
 import net.thucydides.core.annotations.Step;
+import notes.pageObjects.HomePage;
 
 import static net.serenitybdd.screenplay.matchers.WebElementStateMatchers.isVisible;
 import static notes.pageObjects.AuthPage.*;
-import static notes.pageObjects.HomePage.ADD_NEW_NOTE_BUTTON_HOME;
-import static notes.pageObjects.HomePage.MENU_BUTTON;
+import static notes.pageObjects.HomePage.*;
 import static notes.pageObjects.NotesPage.*;
 
 public class ClickTask {
@@ -19,6 +19,15 @@ public class ClickTask {
 			"Click on add new note circle button",
 			WaitUntil.the(ADD_NOTE_CIRCLE_BUTTON, isVisible())
 				.then(Click.on(ADD_NOTE_CIRCLE_BUTTON))
+		);
+	}
+	
+	@Step
+	public static Task clickOnCircleAuthPageButton() {
+		return Task.where(
+			"Go to auth page",
+			WaitUntil.the(AUTH_PAGE_BUTTON, isVisible())
+				.then(Click.on(AUTH_PAGE_BUTTON))
 		);
 	}
 	

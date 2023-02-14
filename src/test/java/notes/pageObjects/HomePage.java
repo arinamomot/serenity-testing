@@ -16,6 +16,12 @@ public class HomePage extends PageObject {
 	public static final Target SETTINGS_WINDOW =
 		Target.the("Settings Window").locatedBy("/html/body/div[3]");
 	
+	public static final Target AUTH_PAGE_BUTTON =
+		Target.the("Auth Page Button").locatedBy("/html/body/div[1]/div/header/div[1]/nav[2]/a[2]");
+	
+	public static final Target NOTES_PAGE_BUTTON =
+		Target.the("Notes Page Button").locatedBy("/html/body/div[1]/div/header/div[1]/nav[2]/a[3]");
+	
 	public static final Target ADD_NEW_NOTE_BUTTON_HOME =
 		Target.the("Add New Note Button Home Page").locatedBy("/html/body/div[1]/div/div/div/svg/a");
 	
