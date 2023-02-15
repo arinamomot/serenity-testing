@@ -1,22 +1,22 @@
-image: markhobson/maven-chrome:jdk-17
+image: markhobson/maven-chrome:jdk-11
 
 stages:
   - build
   - test
 
+variables:
+  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
+
+cache:
+  paths:
+    - .m2/repository/
+
 build:
   stage: build
   script:
-      - mvn clean
-      - mvn compile
+    - mvn compile
 
 test:
   stage: test
   script:
-      - mvn test
-  artifacts:
-    when: always
-    paths:
-      - src/videos/**/*.mp4
-      - src/screenshots/**/*.png
-    expire_in: 1 week
+    - mvn test -Dtest=com.TurnOnMusicTest
