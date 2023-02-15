@@ -14,3 +14,9 @@ test:
   stage: test
   script:
       - mvn test
+  artifacts:
+    when: always
+    paths:
+      - src/videos/**/*.mp4
+      - src/screenshots/**/*.png
+    expire_in: 1 week
