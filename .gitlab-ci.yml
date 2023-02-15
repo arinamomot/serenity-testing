@@ -24,6 +24,6 @@ test:
   artifacts:
     when: always
     paths:
-      - serenity/videos/**/*.mp4
-      - serenity/screenshots/**/*.png
+      - src/videos/**/*.mp4
+      - src/screenshots/**/*.png
     expire_in: 1 week
