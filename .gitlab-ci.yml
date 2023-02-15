@@ -29,3 +29,4 @@ test:
       - src/videos/**/*.mp4
       - src/screenshots/**/*.png
     expire_in: 1 week
+    
