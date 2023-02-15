@@ -4,26 +4,19 @@ stages:
   - build
   - test
 
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-
-cache:
-  paths:
-    - .m2/repository/
-
 build:
   stage: build
   script:
-    - mvn compile
+      - mvn clean
+      - mvn compile
 
 test:
   stage: test
   script:
-   - mvn clean verify
-
+      - mvn test
   artifacts:
     when: always
     paths:
-      - serenity/videos/**/*.mp4
-      - serenity/screenshots/**/*.png
+      - src/videos/**/*.mp4
+      - src/screenshots/**/*.png
     expire_in: 1 week
