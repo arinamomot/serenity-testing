@@ -42,6 +42,7 @@ public class RegistrationTest {
 	private WebDriver driver;
 	
 	private static final String AUTH_TEST_DATA_FILE = "src/test/resources/authData.csv";
+	private static final String AUTH_TEST_INVALID_DATA_FILE = "src/test/resources/authInvalidData.csv";
 	private static final String submit = "Submitted";
 	private static final String fieldError = "Please check and fill the form correctly";
 	private static final String notAccepted = "You need to accept the license and terms first";
@@ -92,4 +93,33 @@ public class RegistrationTest {
 		}
 	}
 	
+	
+	@Test
+	public void should_not_be_able_to_sign_up_with_data_from_CSV_file() {
+		List<Map<String, String>> testData = ReadDataFromCSV.readTestData(AUTH_TEST_INVALID_DATA_FILE);
+		Map<String, String> firstRow = testData.get(0);
+		
+		when(arina).attemptsTo(
+			FillInAuthFormWithCSVData.fillInFormWithCSVData(firstRow),
+			ClickTask.acceptLicenseTermsButton(),
+			ClickTask.clickOnSubmitAuthButton()
+		);
+		
+		assertTrue(AuthPage.NOTIFICATION.resolveFor(arina).isVisible());
+		assertEquals(Text.of(AuthPage.NOTIFICATION).answeredBy(arina), fieldError);
+	}
+	
+	@Test
+	public void should_not_be_able_to_sign_up_license_not_accepted() {
+		List<Map<String, String>> testData = ReadDataFromCSV.readTestData(AUTH_TEST_DATA_FILE);
+		Map<String, String> firstRow = testData.get(0);
+		
+		when(arina).attemptsTo(
+			FillInAuthFormWithCSVData.fillInFormWithCSVData(firstRow),
+			ClickTask.clickOnSubmitAuthButton()
+		);
+		
+		assertTrue(AuthPage.NOTIFICATION.resolveFor(arina).isVisible());
+		assertEquals(Text.of(AuthPage.NOTIFICATION).answeredBy(arina), notAccepted);
+	}
 }
