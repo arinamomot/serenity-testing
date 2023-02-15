@@ -1,28 +1,23 @@
-image: markhobson/maven-chrome:jdk-15
+image: markhobson/maven-chrome:jdk-11
 
 stages:
   - build
   - test
 
-variables:
-  MAVEN_OPTS: "-Dmaven.repo.local=.m2/repository"
-
-cache:
-  paths:
-    - .m2/repository/
-
-build:
+build-job:
   stage: build
   script:
-    - mvn compile
+      - mvn clean
+      - echo "Previous artifacts have been cleaned!"
+      - mvn compile
+      - echo "The package is compilied!"
 
-test:
+test-job:
   stage: test
   script:
-    - mvn clean verify
-  artifacts:
-    when: always
-    paths:
-      - src/videos//*.mp4
-      - src/screenshots//*.png
-    expire_in: 1 week
+      - echo "The implemented tested are being run!"
+      - mvn test
+      
+
+
+
