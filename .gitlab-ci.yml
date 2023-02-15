@@ -4,20 +4,13 @@ stages:
   - build
   - test
 
-build-job:
+build:
   stage: build
   script:
       - mvn clean
-      - echo "Previous artifacts have been cleaned!"
       - mvn compile
-      - echo "The package is compilied!"
 
-test-job:
+test:
   stage: test
   script:
-      - echo "The implemented tested are being run!"
       - mvn test
-      
-
-
-
