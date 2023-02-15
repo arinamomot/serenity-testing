@@ -16,11 +16,13 @@ build:
   script:
     - mvn compile
 
-test:
+.verify:
   stage: test
   script:
-   - mvn clean verify
-
+    - 'mvn $MAVEN_CLI_OPTS verify'
+  except:
+    variables:
+      - $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
   artifacts:
     when: always
     paths:
